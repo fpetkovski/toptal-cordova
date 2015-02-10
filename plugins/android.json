@@ -5,35 +5,26 @@
     },
     "config_munge": {
         "files": {
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:label=\"@string/app_name\" android:name=\"org.pgsqlite.SQLitePlugin\"></activity>",
+                            "count": 1
+                        }
+                    ],
+                    "/*": []
+                }
+            },
             "res/xml/config.xml": {
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"org.pgsqlite.SQLitePlugin\" /></feature>",
                             "count": 1
-                        }
-                    ]
-                }
-            },
-            "AndroidManifest.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest/application": [
-                        {
-                            "xml": "<activity android:label=\"@string/app_name\" android:name=\"org.pgsqlite.SQLitePlugin\"></activity>",
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -42,16 +33,13 @@
         }
     },
     "installed_plugins": {
+        "com.brodysoft.sqlitePlugin": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.example.hello"
         },
         "org.apache.cordova.dialogs": {
-            "PACKAGE_NAME": "com.example.hello"
-        },
-        "com.brodysoft.sqlitePlugin": {
-            "PACKAGE_NAME": "com.example.hello"
-        },
-        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.example.hello"
         }
     },

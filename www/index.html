@@ -7,31 +7,29 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/toptal.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/toptal.css" />
         <title>Hello Toptal</title>
     </head>
     <body>
         <div id="container">
-            <header>
-                <ul id="menu">
-                    <li id="search-tab-button" class="tab-button active" data-tab="#search-tab">Search Projects</li>
-                    <li id="post-tab-button" class="tab-button" data-tab="#add-tab">Post a Project</li>
-                </ul>
-            </header>
-            <div >
-                <div id="tab-content">
+            <div id="tab-content">
                     
-                </div>
             </div>
         </div>
+        <footer>
+            <ul id="menu">
+                <li id="search-tab-button" class="tab-button active" data-tab="#search-tab">Search Projects</li>
+                <li id="post-tab-button" class="tab-button" data-tab="#add-tab">Post a Project</li>
+            </ul>
+        </footer>
         <div id="dev-null" style="display: none"></div>
-        <script type="text/javascript" src="cordova.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        
-        <script type="text/javascript" src="js/MemoryStorageService.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/Controller.js"></script>
+        <script type="text/javascript" src="js/MemoryStorageService.js"></script>
+        <script type="text/javascript" src="js/SQLiteStorageService.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 
     </body>

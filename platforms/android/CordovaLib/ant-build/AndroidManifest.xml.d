@@ -1,2 +1,2 @@
-/home/philip/Development/Projects/toptal/platforms/android/CordovaLib/ant-build/AndroidManifest.xml : \
-/home/philip/Development/Projects/toptal/platforms/android/CordovaLib/AndroidManifest.xml \
+C:\Users\filippe\Development\toptal-cordova\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
+C:\Users\filippe\Development\toptal-cordova\platforms\android\CordovaLib\AndroidManifest.xml \

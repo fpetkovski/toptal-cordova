@@ -1,0 +1,61 @@
+.ui-page {
+	background-color: white;
+}
+
+form * {
+	border-radius: 0px !important;
+}
+
+#container {
+	width: 100%;
+	margin: auto;
+	background-color: white;
+}
+
+ul#menu {
+	list-style: none;
+	width: 100%;
+	overflow: auto;
+	padding: 0;
+	margin-top: 0;
+}
+	ul#menu > li.tab-button {
+		display: block;
+		width: 49.9%;
+		padding: 10px 0;
+		float: left;
+		text-align: center;
+		cursor: pointer;
+		border: 1px solid #ccc;
+		border-top: 2px solid #ccc;
+	}
+		ul#menu > li.tab-button.active {
+			background-color: #ccc;
+			font-weight: bold;
+			cursor: default;
+			border-top: 2px solid rgb(42, 42, 131);
+		}
+
+
+#tab-content {
+	width: 98%;
+	margin: auto;	
+}
+
+#search {
+	margin-bottom: 10px;
+}
+
+	#search input,
+	#search button {
+		border-radius: 0;
+	}
+
+.project {
+	border: 1px solid rgb(226, 223, 223);
+	bro
+}
+
+.project > .project-description-wrapper {
+	margin-top: 5px;
+}

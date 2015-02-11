@@ -12,8 +12,7 @@
                             "xml": "<activity android:label=\"@string/app_name\" android:name=\"org.pgsqlite.SQLitePlugin\"></activity>",
                             "count": 1
                         }
-                    ],
-                    "/*": []
+                    ]
                 }
             },
             "res/xml/config.xml": {

@@ -58,26 +58,32 @@ SQLiteStorageService = function () {
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude;
                    
-                    db.transaction(function(tx) {
-                        tx.executeSql('INSERT INTO projects (name, company, description, latitude, longitude) VALUES (?,?,?,?,?)', 
-                            [name, company, description, lat, lon], 
-                            function(tx, res) 
-                        {
-                            console.log('success');
-                            deferred.resolve();
-                        }, function(e) 
-                        {
-                            console.log('failure');
-                            deferred.reject('Error posting a new project');
-                        });
-                    },
-                    function() {
-                        deferred.reject(
-                                'We could not fetch your current location. ' + 
-                                'Please try again or post a project without adding a location');
-                    }, {maximumAge: 60000, timeout: 5000, enableHighAccuracy: true}
-                );
-            });
+                    db.transaction(
+                    	function(tx) {
+                            tx.executeSql('INSERT INTO projects (name, company, description, latitude, longitude) VALUES (?,?,?,?,?)', 
+                                [name, company, description, lat, lon], 
+                                function(tx, res) 
+                            {
+                                console.log('success');
+                                deferred.resolve();
+                            }, function(e) 
+                            {
+                                console.log('failure');
+                                deferred.reject('Error posting a new project');
+                            });
+                        },
+                        function() {
+                            deferred.reject('Error during save process. ');
+                        }
+                    );
+                },
+                function() {
+                    deferred.reject(
+                            'We could not fetch your current location. ' + 
+                            'Please try again or post a project without adding a location');
+                },
+                {maximumAge: 60000, timeout: 5000, enableHighAccuracy: true}
+            );
         } else {
             db.transaction(function(tx) {
                 tx.executeSql('INSERT INTO projects (name, company, description) VALUES (?,?,?)', [name, company, description], function(tx, res) {

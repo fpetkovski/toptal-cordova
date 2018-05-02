@@ -1,13 +1,15 @@
 SQLiteStorageService = function () {
-	var service = {};
-	var db = window.sqlitePlugin.openDatabase({name: "demo.toptal"});
+    var service = {};
+    var db = window.sqlitePlugin ?
+        window.sqlitePlugin.openDatabase({name: "demo.toptal", location: "default"}) :
+        window.openDatabase("demo.toptal", "1.0", "DB para FactAV", 5000000);
 
     service.initialize = function() {
-        
+
         var deferred = $.Deferred();
         db.transaction(function(tx) {
             tx.executeSql(
-                'CREATE TABLE IF NOT EXISTS projects ' + 
+                'CREATE TABLE IF NOT EXISTS projects ' +
                 '(id integer primary key, name text, company text, description text, latitude real, longitude real)'
             ,[], function(tx, res) {
                 tx.executeSql('DELETE FROM projects', [], function(tx, res) {
@@ -37,7 +39,7 @@ SQLiteStorageService = function () {
                             latitude: res.rows.item(i).latitude,
                             longitude: res.rows.item(i).longitude
                         }
-                    } 
+                    }
                     projects.push(project);
                 }
                 deferred.resolve(projects);
@@ -57,16 +59,16 @@ SQLiteStorageService = function () {
                 function(position) {
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude;
-                   
+
                     db.transaction(
                     	function(tx) {
-                            tx.executeSql('INSERT INTO projects (name, company, description, latitude, longitude) VALUES (?,?,?,?,?)', 
-                                [name, company, description, lat, lon], 
-                                function(tx, res) 
+                            tx.executeSql('INSERT INTO projects (name, company, description, latitude, longitude) VALUES (?,?,?,?,?)',
+                                [name, company, description, lat, lon],
+                                function(tx, res)
                             {
                                 console.log('success');
                                 deferred.resolve();
-                            }, function(e) 
+                            }, function(e)
                             {
                                 console.log('failure');
                                 deferred.reject('Error posting a new project');
@@ -79,7 +81,7 @@ SQLiteStorageService = function () {
                 },
                 function() {
                     deferred.reject(
-                            'We could not fetch your current location. ' + 
+                            'We could not fetch your current location. ' +
                             'Please try again or post a project without adding a location');
                 },
                 {maximumAge: 60000, timeout: 5000, enableHighAccuracy: true}

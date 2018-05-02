@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.hello" version="0.0.1" 	xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.example.hello" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Hello Toptal</name>
     <description>
         Apache Toptal application.
@@ -9,13 +9,24 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="1000" />
     <platform name="android">
         <icon src="www/img/logo.png" />
-        <splash src="www/img/logo.png" density="mdpi"/>
-        <splash src="www/img/logo.png" density="hdpi"/>
-        <splash src="www/img/logo.png" density="xhdpi"/>
+        <splash density="mdpi" src="www/img/logo.png" />
+        <splash density="hdpi" src="www/img/logo.png" />
+        <splash density="xhdpi" src="www/img/logo.png" />
     </platform>
+    <platform name="ios">
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>need location access to find things nearby</string>
+        </edit-config>
+    </platform>
+    <feature name="http://api.phonegap.com/1.0/geolocation" />
+    <allow-intent href="https://*/*" />
+    <plugin name="cordova-sqlite-storage" spec="^2.3.1" />
+    <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <engine name="android" spec="^7.0.0" />
+    <engine name="ios" spec="^4.5.4" />
 </widget>

@@ -1,13 +1,13 @@
 var Controller = function() {
-    
+
     var controller = {
         self: null,
         initialize: function() {
             self = this;
             new SQLiteStorageService().done(function(service) {
-                self.storageService = service;   
+                self.storageService = service;
                 self.bindEvents();
-                self.renderSearchView(); 
+                self.renderSearchView();
             }).fail(function(error) {
                 alert(error);
             });
@@ -24,7 +24,7 @@ var Controller = function() {
             if ($(this).hasClass('active')) {
                 return;
             }
-        	
+
             var tab = $(this).data('tab');
             if (tab === '#add-tab') {
                 self.renderPostView();
@@ -41,9 +41,9 @@ var Controller = function() {
             $tab.empty();
             $("#tab-content").load("./views/post-project-view.html", function(data) {
                 $('#tab-content').find('#post-project-form').on('submit', self.postProject);
-            }); 
+            });
         },
-        
+
 
         postProject: function(e) {
 
@@ -79,6 +79,10 @@ var Controller = function() {
 
             var $projectTemplate = null;
             $("#tab-content").load("./views/search-project-view.html", function(data) {
+                $('#addressSearch').on('click', function() {
+                    alert('Not implemented');
+                });
+
                 $projectTemplate = $('.project').remove();
 
                 var projects = self.storageService.getProjects().done(function(projects) {
@@ -92,10 +96,10 @@ var Controller = function() {
                         $div.find('.project-description').text(project.description);
 
                         if (project.location) {
-                            var url = 
-                                '<a target="_blank" href="https://www.google.com.au/maps/preview/@' + 
+                            var url =
+                                '<a target="_blank" href="https://www.google.com.au/maps/preview/@' +
                                 project.location.latitude + ',' + project.location.longitude + ',10z">Click to open map</a>';
-                            
+
                             $div.find('.project-location').html(url);
                         } else {
                             $div.find('.project-location').text("Not specified");
@@ -106,7 +110,7 @@ var Controller = function() {
                 }).fail(function(error) {
                     alert(error);
                 });
-            }); 
+            });
         }
     }
     controller.initialize();
